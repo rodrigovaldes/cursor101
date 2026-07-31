@@ -79,6 +79,23 @@ a {
   border-bottom: 1px solid rgba(18, 54, 165, 0.22);
 }
 
+.nav-links {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+
+.nav-link {
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
 .brand {
   display: inline-flex;
   gap: 11px;
@@ -169,6 +186,14 @@ h1 em {
   line-height: 1.6;
 }
 
+.about-hero {
+  max-width: 1060px;
+}
+
+.about-copy {
+  max-width: 680px;
+}
+
 .contact-link {
   display: inline-flex;
   gap: 36px;
@@ -232,6 +257,10 @@ h1 em {
     align-items: flex-start;
     flex-direction: column;
     gap: 24px;
+  }
+
+  .nav-links {
+    gap: 16px;
   }
 
   .contact-link {
