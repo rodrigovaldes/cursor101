@@ -1,8 +1,12 @@
 :root {
-  --ink: #1236a5;
-  --paper: #fff8c9;
-  --accent: #ffd629;
-  --muted: #4965bd;
+  --ink: #111113;
+  --paper: #f4f3f1;
+  --surface: #ffffff;
+  --purple: #635bff;
+  --purple-deep: #4527a0;
+  --accent: #ffd84d;
+  --muted: #5e6068;
+  --line: rgba(17, 17, 19, 0.2);
 }
 
 * {
@@ -33,6 +37,7 @@ a {
   grid-template-rows: auto 1fr auto;
   min-height: 100svh;
   padding: 32px 42px 24px;
+  background: var(--paper);
   overflow: hidden;
 }
 
@@ -42,7 +47,7 @@ a {
   right: -9vw;
   width: 56vw;
   height: 56vw;
-  border: 1px solid rgba(18, 54, 165, 0.16);
+  border: 1px solid var(--line);
   border-radius: 50%;
   content: "";
 }
@@ -56,7 +61,94 @@ a {
   border-radius: 50%;
   background: var(--accent);
   content: "";
-  opacity: 0.6;
+  opacity: 0.72;
+}
+
+.page--home {
+  background: #dad8df;
+}
+
+.page--home::before,
+.page--home::after {
+  display: none;
+}
+
+.gradient-scene {
+  position: absolute;
+  z-index: 0;
+  inset: -22%;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 46% 48%, rgba(255, 255, 255, 0.9) 0 12%, transparent 34%),
+    linear-gradient(
+      125deg,
+      #ffffff 8%,
+      #e8e5ed 25%,
+      #a49af5 47%,
+      #5e43d5 65%,
+      #ffd84d 88%
+    );
+  transform: rotate(-6deg) scale(1.08);
+  will-change: transform;
+  animation: scene-drift 10s ease-in-out infinite alternate;
+}
+
+.gradient-scene::after {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(105deg, transparent 24%, rgba(255, 255, 255, 0.46) 43%, transparent 60%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(17, 17, 19, 0.1));
+  content: "";
+  animation: light-sweep 7s ease-in-out infinite alternate;
+}
+
+.gradient-orb {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  filter: blur(36px);
+  will-change: transform;
+}
+
+.gradient-orb--purple {
+  top: 8%;
+  right: 3%;
+  width: 48vw;
+  height: 48vw;
+  background: rgba(99, 91, 255, 0.82);
+  animation: purple-float 9s ease-in-out infinite;
+}
+
+.gradient-orb--yellow {
+  right: 20%;
+  bottom: 2%;
+  width: 36vw;
+  height: 36vw;
+  background: rgba(255, 216, 77, 0.9);
+  animation: yellow-float 8s ease-in-out infinite;
+}
+
+.gradient-orb--white {
+  top: 24%;
+  left: 18%;
+  width: 42vw;
+  height: 42vw;
+  background: rgba(255, 255, 255, 0.76);
+  animation: white-float 11s ease-in-out infinite;
+}
+
+.gradient-grid {
+  position: absolute;
+  inset: -15%;
+  display: block;
+  background-image:
+    linear-gradient(rgba(17, 17, 19, 0.075) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 17, 19, 0.075) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent 76%);
+  will-change: transform;
+  animation: grid-drift 14s linear infinite;
 }
 
 .nav,
@@ -76,7 +168,7 @@ a {
 
 .nav {
   padding-bottom: 24px;
-  border-bottom: 1px solid rgba(18, 54, 165, 0.22);
+  border-bottom: 1px solid var(--line);
 }
 
 .nav-links {
@@ -126,8 +218,8 @@ a {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--ink);
-  box-shadow: 0 0 0 5px rgba(18, 54, 165, 0.1);
+  background: var(--purple-deep);
+  box-shadow: 0 0 0 5px rgba(99, 91, 255, 0.13);
   animation: pulse 2.4s ease-out infinite;
 }
 
@@ -175,7 +267,7 @@ h1 em {
   max-width: 760px;
   margin-top: clamp(38px, 6vh, 70px);
   padding-top: 22px;
-  border-top: 1px solid rgba(18, 54, 165, 0.3);
+  border-top: 1px solid var(--line);
 }
 
 .hero-footer p {
@@ -203,14 +295,18 @@ h1 em {
   font-size: 12px;
   font-weight: 500;
   text-decoration: none;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(8px);
   transition:
     color 180ms ease,
-    background 180ms ease;
+    background 180ms ease,
+    border-color 180ms ease;
 }
 
 .contact-link:hover {
-  color: var(--paper);
+  color: var(--surface);
   background: var(--ink);
+  border-color: var(--ink);
 }
 
 .footer {
@@ -222,7 +318,77 @@ h1 em {
 
 @keyframes pulse {
   50% {
-    box-shadow: 0 0 0 8px rgba(18, 54, 165, 0);
+    box-shadow: 0 0 0 8px rgba(99, 91, 255, 0);
+  }
+}
+
+@keyframes scene-drift {
+  to {
+    transform: rotate(-3deg) scale(1.13) translate3d(-1.5%, 1.5%, 0);
+  }
+}
+
+@keyframes light-sweep {
+  to {
+    transform: translate3d(18%, -8%, 0);
+  }
+}
+
+@keyframes purple-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate3d(-18%, 12%, 0) scale(1.16);
+  }
+
+  66% {
+    transform: translate3d(-7%, 24%, 0) scale(1.04);
+  }
+}
+
+@keyframes yellow-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate3d(16%, -20%, 0) scale(1.12);
+  }
+
+  66% {
+    transform: translate3d(-6%, -9%, 0) scale(0.94);
+  }
+}
+
+@keyframes white-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate3d(20%, 10%, 0) scale(0.86);
+  }
+
+  66% {
+    transform: translate3d(8%, 22%, 0) scale(1.1);
+  }
+}
+
+/* Translate distance must equal .gradient-grid background-size so the tile loops seamlessly. */
+@keyframes grid-drift {
+  to {
+    transform: translate3d(80px, 80px, 0);
+  }
+}
+
+@keyframes grid-drift-sm {
+  to {
+    transform: translate3d(56px, 56px, 0);
   }
 }
 
@@ -243,6 +409,37 @@ h1 em {
     bottom: -18vw;
     width: 85vw;
     height: 85vw;
+  }
+
+  .gradient-scene {
+    inset: -12% -62%;
+    transform: rotate(-8deg) scale(1.05);
+  }
+
+  .gradient-orb--purple {
+    top: 6%;
+    right: 5%;
+    width: 100vw;
+    height: 100vw;
+  }
+
+  .gradient-orb--yellow {
+    right: 8%;
+    bottom: 8%;
+    width: 90vw;
+    height: 90vw;
+  }
+
+  .gradient-orb--white {
+    top: 28%;
+    left: 14%;
+    width: 105vw;
+    height: 105vw;
+  }
+
+  .gradient-grid {
+    background-size: 56px 56px;
+    animation-name: grid-drift-sm;
   }
 
   .hero {
@@ -273,7 +470,11 @@ h1 em {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .status-dot {
+  .status-dot,
+  .gradient-scene,
+  .gradient-scene::after,
+  .gradient-orb,
+  .gradient-grid {
     animation: none;
   }
 }
