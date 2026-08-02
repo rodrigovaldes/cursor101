@@ -27,9 +27,8 @@ compile. Deployment is the files as-is (see `README.md`).
 
 ### Non-obvious notes
 
-- Google Fonts (DM Sans, Manrope) load from a CDN. If outbound network to
-  `fonts.googleapis.com` / `fonts.gstatic.com` is blocked, the site still works and falls back
-  to system `sans-serif`; only pixel-perfect typography is affected.
+- DM Sans and Manrope are self-hosted under `fonts/` (see `fonts/README.md`). No CDN or
+  outbound network is required for typography.
 - The `about.html` nav intentionally links back to `Home` and does not contain a `Contact Me`
   link — this is the site's design, not a bug.
 - No environment variables or secrets are required.
