@@ -202,11 +202,6 @@ a {
   text-decoration: none;
 }
 
-.nav-link[href="about.html"],
-.nav-link[href="contact.html"] {
-  font-size: 28px;
-}
-
 .nav-link:hover {
   text-decoration: underline;
   text-underline-offset: 4px;
