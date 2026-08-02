@@ -195,9 +195,14 @@ a {
 }
 
 .nav-link {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   text-decoration: none;
+}
+
+.nav-link[href="about.html"],
+.nav-link[href="contact.html"] {
+  font-size: 28px;
 }
 
 .nav-link:hover {
@@ -209,7 +214,7 @@ a {
   display: inline-flex;
   gap: 11px;
   align-items: center;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.13em;
   text-decoration: none;
@@ -227,7 +232,7 @@ a {
   gap: 8px;
   align-items: center;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.03em;
 }
 
@@ -324,6 +329,18 @@ h1 em {
   color: var(--surface);
   background: var(--ink);
   border-color: var(--ink);
+}
+
+.about-copy .contact-link {
+  color: var(--surface);
+  background: #000;
+  border-color: #000;
+}
+
+.about-copy .contact-link:hover {
+  color: var(--surface);
+  background: #222;
+  border-color: #222;
 }
 
 .footer {
