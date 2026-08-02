@@ -5,7 +5,7 @@ A simple static "coming soon" website for My Business.
 ## Tech
 
 - Plain HTML5 + CSS3
-- Google Fonts (DM Sans, Manrope) via CDN
+- Self-hosted fonts (DM Sans, Manrope; SIL Open Font License)
 - No build step, no dependencies, no JavaScript
 
 ## Project structure
@@ -15,6 +15,7 @@ index.html    Main landing page (links to about and contact)
 about.html    About page
 contact.html  Contact page
 styles.css    Shared styles
+fonts/        Self-hosted woff2 font files
 ```
 
 ## Running locally
